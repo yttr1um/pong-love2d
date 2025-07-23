@@ -8,7 +8,10 @@ function Ball:load()
     self.speed = 400
     self.xVel = -self.speed
     self.yVel = 0
-    self.sound = love.audio.newSource("sounds/pongball.wav", "static")
+
+    self.sounds = {}
+    self.sounds.bounce = love.audio.newSource("sounds/pongball.wav", "static")
+    self.sounds.score = love.audio.newSource("sounds/pongscore.wav", "static")
 end
 
 function Ball:update(dt)
@@ -30,7 +33,7 @@ function Ball:collide()
         local collisionPosition = middleBall - middlePlayer
         self.yVel =  collisionPosition * 5
 
-        self.sound:play()
+        self.sounds.bounce:play()
     end
 
     if checkCollision(self, AI) then
@@ -41,18 +44,18 @@ function Ball:collide()
         local collisionPosition = middleBall - middleAI
         self.yVel =  collisionPosition * 5
 
-        self.sound:play()
+        self.sounds.bounce:play()
     end
 
     if self.y < 0 then 
         self.y = 0
         self.yVel = -self.yVel
-        self.sound:play()
+        self.sounds.bounce:play()
 
     elseif self.y + self.height > love.graphics.getHeight() then
         self.y = love.graphics.getHeight() - self.height
         self.yVel = -self.yVel
-        self.sound:play()
+        self.sounds.bounce:play()
     end
 
     if self.x < 0 then
@@ -61,6 +64,7 @@ function Ball:collide()
         self.yVel = 0
         self.xVel = self.speed
         AI.score = AI.score + 1
+        self.sounds.score:play()
     end
 
     if self.x + self.width > love.graphics.getWidth() then
@@ -69,6 +73,7 @@ function Ball:collide()
         self.yVel = 0
         self.xVel = -self.speed
         Player.score = Player.score + 1
+        self.sounds.score:play()
     end
 end
 
