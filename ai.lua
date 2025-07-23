@@ -25,6 +25,12 @@ end
 
 function AI:move(dt)
     self.y = self.y + self.yVel * dt
+
+    if  self.y < 0 then
+        self.y = 0
+    elseif self.y + self.height > love.graphics.getHeight() then
+        self.y = love.graphics.getHeight() - self.height
+    end
 end
 
 function AI:acquireTarget()
