@@ -1,18 +1,22 @@
 local Player = require("player")
 local Ball = require("ball")
+local AI = require("ai")
 
 function love.load()
     Player:load()
+    AI:load()
     Ball:load()
 end
 
 function love.update(dt)
     Player:update(dt)
+    AI:update(dt)
     Ball:update(dt)
 end
 
 function love.draw()
     Player:draw()
+    AI:draw()
     Ball:draw()
 end
 
