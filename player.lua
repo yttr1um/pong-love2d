@@ -1,4 +1,4 @@
-local Player = {}
+Player = {}
 
 function Player:load()
     self.x = 50
@@ -29,5 +29,3 @@ end
 function Player:draw()
     love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
 end
-
-return Player

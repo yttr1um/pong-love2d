@@ -1,6 +1,6 @@
-local Player = require("player")
-local Ball = require("ball")
-local AI = require("ai")
+require("player")
+require("ball")
+require("ai")
 
 function love.load()
     Player:load()

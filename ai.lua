@@ -1,6 +1,4 @@
-local AI = {}
-
-local Ball = require("ball")
+AI = {}
 
 function AI:load()
     self.width = 20
@@ -9,11 +7,19 @@ function AI:load()
     self.y = love.graphics.getHeight() / 2
     self.speed = 500
     self.yVel = 0
+
+    self.timer = 0
+    self.rate = 0.5
 end
 
 function AI:update(dt)
     self:move(dt)
-    self:acquireTarget()
+    self.timer = self.timer + dt
+
+    if self.timer > self.rate then
+        self.timer = 0
+        self:acquireTarget()
+    end
 end
 
 function AI:move(dt)
@@ -33,5 +39,3 @@ end
 function AI:draw()
     love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
 end
-
-return AI
