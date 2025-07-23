@@ -7,6 +7,7 @@ function AI:load()
     self.y = love.graphics.getHeight() / 2
     self.speed = 500
     self.yVel = 0
+    self.score = 0
 
     self.timer = 0
     self.rate = 0.5

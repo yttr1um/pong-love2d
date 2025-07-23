@@ -18,6 +18,15 @@ function love.draw()
     Player:draw()
     AI:draw()
     Ball:draw()
+
+    love.graphics.printf(
+        Player.score .. " : " .. AI.score,
+        love.graphics.newFont(32),
+        0,
+        50,
+        love.graphics.getWidth(),
+        "center"
+    )
 end
 
 function checkCollision(a, b)

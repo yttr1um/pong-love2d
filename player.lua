@@ -6,6 +6,7 @@ function Player:load()
     self.width = 20
     self.height = 100
     self.speed = 500
+    self.score = 0
 end
 
 function Player:update(dt)
