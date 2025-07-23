@@ -1,3 +1,5 @@
+local Player = require("player")
+
 function love.load()
 
 end
